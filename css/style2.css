@@ -1,0 +1,19 @@
+.additional__label,
+.filling__label,
+.size__label {
+    border: 1px solid black;
+    padding: 1%;
+    cursor: pointer;
+}
+
+.additional__label:hover,
+.filling__label:hover,
+.size__label:hover {
+    background-color: cadetblue;
+}
+
+.additional__label:active,
+.filling__label:active,
+.size__label:active {
+    background-color: rgb(245, 60, 60);
+}

@@ -5,6 +5,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Потом удалить -->
+    <link rel="stylesheet" href="css/style2.css">
+    <!-- ---- -->
     <script defer src="js/script.js"></script>
     <title>Document</title>
 </head>
@@ -16,36 +19,29 @@
                 <h1>КваZi-burger</h1>
                 <div class="burger__size">
                     <h2>Размер</h2>
-                    <input type="radio" name="size" id="size_small" >
-                    <input type="radio" name="size" id="size_big" >
-                    <label class="size__label" for="size_small" data-price="50" data-calories="20">Маленький</label>                    
-                    <label class="size__label" for="size_big" data-price="100" data-calories="40">Большой</label>                    
+                    <button class="size__label" data-price="50" data-calories="20" data-type="size">Маленький</button>              
+                    <button class="size__label" data-price="100" data-calories="40" data-type="size">Маленький</button>              
                 </div>
                 <div class="burger__filling">
                     <h2>Начинка</h2>
-                    <input type="radio" name="filling" id="filling_cheese">
-                    <input type="radio" name="filling" id="filling_salad">
-                    <input type="radio" name="filling" id="filling_potato">
-                    <label for="filling_cheese">С сыром</label>
-                    <label for="filling_salad">С салатом</label>
-                    <label for="filling_potato">С картофелем</label>
+                    <button class="filling__label" data-price="50" data-calories="20" data-type="filling">С сыром</button>
+                    <button class="filling__label" data-price="50" data-calories="20" data-type="filling">С салатом</button>
+                    <button class="filling__label" data-price="50" data-calories="20" data-type="filling">С картофелем</button>
                 </div>
                 <div class="burger__additional">
                     <h2>Дополнительные опции</h2>
-                    <input type="checkbox" name="additional" id="additional_seasoning">
-                    <input type="checkbox" name="additional" id="additional_mayonnaise">
-                    <label for="additional_seasoning">Добавить приправу</label>
-                    <label for="additional_mayonnaise">Добавить майонез</label>
+                    <button class="additional__label" data-price="50" data-calories="20" data-type="additional">Добавить приправу</button>
+                    <button class="additional__label" data-price="50" data-calories="20" data-type="additional">Добавить майонез</button>
                 </div>
             </div>
             <div class="info">
                 <div class="info__summ">
                     <h3 class="summ__title">Итоговая сумма:</h3>
-                    <p class="summ__number">0</p>
+                    <p class="summ__number"></p>
                 </div>
                 <div class="info__calories">
                     <h3 class="calories__title">Каллории</h3>
-                    <p class="calories__number">0</p>
+                    <p class="calories__number"></p>
                 </div>
             </div>
         </div>
