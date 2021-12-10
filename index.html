@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script defer src="js/script.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <main>
+        <div class="container">
+            <div class="burger">
+                <h1>КваZi-burger</h1>
+                <div class="burger__size">
+                    <h2>Размер</h2>
+                    <input type="radio" name="size" id="size_small" >
+                    <input type="radio" name="size" id="size_big" >
+                    <label class="size__label" for="size_small" data-price="50" data-calories="20">Маленький</label>                    
+                    <label class="size__label" for="size_big" data-price="100" data-calories="40">Большой</label>                    
+                </div>
+                <div class="burger__filling">
+                    <h2>Начинка</h2>
+                    <input type="radio" name="filling" id="filling_cheese">
+                    <input type="radio" name="filling" id="filling_salad">
+                    <input type="radio" name="filling" id="filling_potato">
+                    <label for="filling_cheese">С сыром</label>
+                    <label for="filling_salad">С салатом</label>
+                    <label for="filling_potato">С картофелем</label>
+                </div>
+                <div class="burger__additional">
+                    <h2>Дополнительные опции</h2>
+                    <input type="checkbox" name="additional" id="additional_seasoning">
+                    <input type="checkbox" name="additional" id="additional_mayonnaise">
+                    <label for="additional_seasoning">Добавить приправу</label>
+                    <label for="additional_mayonnaise">Добавить майонез</label>
+                </div>
+            </div>
+            <div class="info">
+                <div class="info__summ">
+                    <h3 class="summ__title">Итоговая сумма:</h3>
+                    <p class="summ__number">0</p>
+                </div>
+                <div class="info__calories">
+                    <h3 class="calories__title">Каллории</h3>
+                    <p class="calories__number">0</p>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>
