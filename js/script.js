@@ -22,34 +22,37 @@ class Burger {
 
         container.addEventListener('click', function (e) {
             let target = e.target;
-            console.log(target);
 
-            if (target.className == 'size__label' && burgerSize.contains(target)) {
-                console.warn('Срабатывает если size__label');
 
-                if(checkProduct.addArr(target.dataset)){
+            if (e.target.classList[0] == 'size__label' && burgerSize.contains(target)) {
+
+                new Frontend(target);
+
+                if (checkProduct.addArr(target.dataset)) {
                     new Calculate(target.dataset, 'add');
                 }
 
             }
-            if (target.className == 'filling__label' && burgerFilling.contains(target)) {
-                console.warn('Срабатывает если filling__label');
+            if (e.target.classList[0] == 'filling__label' && burgerFilling.contains(target)) {
 
-                if(checkProduct.addArr(target.dataset)){
-                    new Calculate(target.dataset, 'add');
-                }
-                
-            }
-            if (target.className == 'additional__label' && burgerAdditional.contains(target)) {
-                console.warn('Срабатывает если filling__label');
+                new Frontend(target);
 
-                if(checkProduct.addArr(target.dataset)){
+                if (checkProduct.addArr(target.dataset)) {
                     new Calculate(target.dataset, 'add');
                 }
 
             }
+            if (e.target.classList[0] == 'additional__label' && burgerAdditional.contains(target)) {
 
-            
+
+
+                if (checkProduct.addArr(target.dataset)) {
+                    new Calculate(target.dataset, 'add');
+                }
+
+            }
+
+
         })
     }
 }
@@ -76,19 +79,18 @@ class Calculate {
     }
 
     calc() {
-        if(this.scenario == 'add'){
+        if (this.scenario == 'add') {
             let sumNumber = document.querySelector(this.summLink);
             let caloriesNumber = document.querySelector(this.caloriesLink);
-    
+
             let sumNum = Number(this._dataObject().price) + Number(sumNumber.innerHTML);
             let caloriesNum = Number(this._dataObject().calories) + Number(caloriesNumber.innerHTML);
-    
+
             sumNumber.innerHTML = sumNum;
             caloriesNumber.innerHTML = caloriesNum;
         }
 
-        if(this.scenario == 'delete') {
-            console.log('delete');
+        if (this.scenario == 'delete') {
 
             let sumNumber = document.querySelector(this.summLink);
             let caloriesNumber = document.querySelector(this.caloriesLink);
@@ -105,19 +107,16 @@ class Calculate {
 class PresenceObjcet {
     constructor() {
         this.arr = [];
-        console.log(this.arr);
     }
 
     addArr(object) {
 
-        console.log(object);
-
-        if(!this.arr.includes(object.type)) {
+        if (!this.arr.includes(object.type)) {
             this.arr.push(object.type);
             return Boolean(true);
         }
 
-        if(this.arr.includes(object.type)) {
+        if (this.arr.includes(object.type)) {
             let index = this.arr.indexOf(object.type);
             this.arr.splice(index, 1);
             new Calculate(object, 'delete');
@@ -128,6 +127,66 @@ class PresenceObjcet {
 
 }
 
+class Frontend {
+    constructor(object) {
+        this.object = object;
+        this.disableBlock();
+        this.state = '';
+    }
+
+    disableBlock() {
+        const parentNode = this.object.parentNode.children;
+
+        this.object.classList.toggle('active');
+
+        for (let i = 0; i < this.object.classList.length; i++) {
+
+            if (this.object.classList[i] == 'active') {
+
+                this.state = 'add';
+                console.log(this.state);
+            } else {
+
+                this.state = 'delete';
+                console.log(this.state);
+            }
+        }
+
+
+        if (this.state == 'add') {
+
+            for (let i = 0; i < parentNode.length; i++) {
+                console.log(parentNode[i].classList);
+
+                if (parentNode[i] != this.object) {
+                    parentNode[i].classList.toggle('block');
+                    parentNode[i].setAttribute('disabled', '');
+                }
+
+            }
+        } else if (this.state == 'delete') {
+
+            for (let i = 0; i < parentNode.length; i++) {
+                console.log(parentNode[i].classList);
+
+                if (parentNode[i] != this.object) {
+                    parentNode[i].classList.toggle('block');
+                    parentNode[i].removeAttribute('disabled');
+                }
+
+            }
+        }
+
+    }
+}
+
+class AdvancedFronted{
+    constructor(object) {
+        this.object = object;
+    }
+
+    
+}
 
 
 
