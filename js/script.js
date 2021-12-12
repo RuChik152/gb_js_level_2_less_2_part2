@@ -44,7 +44,7 @@ class Burger {
             }
             if (e.target.classList[0] == 'additional__label' && burgerAdditional.contains(target)) {
 
-
+                new AdvancedFronted(target);
 
                 if (checkProduct.addArr(target.dataset)) {
                     new Calculate(target.dataset, 'add');
@@ -183,9 +183,12 @@ class Frontend {
 class AdvancedFronted{
     constructor(object) {
         this.object = object;
+        this.activeButton();
     }
 
-    
+    activeButton(){
+        this.object.classList.toggle('active');
+    }
 }
 
 
