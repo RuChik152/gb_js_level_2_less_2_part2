@@ -11,8 +11,6 @@ class Burger {
 
     main() {
 
-
-
         let checkProduct = new PresenceObjcet();
 
         let container = document.querySelector(this.container);
@@ -30,7 +28,7 @@ class Burger {
                 console.warn('Срабатывает если size__label');
 
                 if(checkProduct.addArr(target.dataset)){
-                    new Calculate(target.dataset);
+                    new Calculate(target.dataset, 'add');
                 }
 
             }
@@ -38,7 +36,7 @@ class Burger {
                 console.warn('Срабатывает если filling__label');
 
                 if(checkProduct.addArr(target.dataset)){
-                    new Calculate(target.dataset);
+                    new Calculate(target.dataset, 'add');
                 }
                 
             }
@@ -46,7 +44,7 @@ class Burger {
                 console.warn('Срабатывает если filling__label');
 
                 if(checkProduct.addArr(target.dataset)){
-                    new Calculate(target.dataset);
+                    new Calculate(target.dataset, 'add');
                 }
 
             }
@@ -58,7 +56,8 @@ class Burger {
 
 
 class Calculate {
-    constructor(dataParam, summLink = '.summ__number', caloriesLink = '.calories__number') {
+    constructor(dataParam, scenario, summLink = '.summ__number', caloriesLink = '.calories__number') {
+        this.scenario = scenario;
         this.summLink = summLink;
         this.caloriesLink = caloriesLink;
         this.dataParam = dataParam;
@@ -77,14 +76,27 @@ class Calculate {
     }
 
     calc() {
-        let sumNumber = document.querySelector(this.summLink);
-        let caloriesNumber = document.querySelector(this.caloriesLink);
+        if(this.scenario == 'add'){
+            let sumNumber = document.querySelector(this.summLink);
+            let caloriesNumber = document.querySelector(this.caloriesLink);
+    
+            let sumNum = Number(this._dataObject().price) + Number(sumNumber.innerHTML);
+            let caloriesNum = Number(this._dataObject().calories) + Number(caloriesNumber.innerHTML);
+    
+            sumNumber.innerHTML = sumNum;
+            caloriesNumber.innerHTML = caloriesNum;
+        }
 
-        let sumNum = Number(this._dataObject().price) + Number(sumNumber.innerHTML);
-        let caloriesNum = Number(this._dataObject().calories) + Number(caloriesNumber.innerHTML);
+        if(this.scenario == 'delete') {
+            console.log('delete');
 
-        sumNumber.innerHTML = sumNum;
-        caloriesNumber.innerHTML = caloriesNum;
+            let sumNumber = document.querySelector(this.summLink);
+            let caloriesNumber = document.querySelector(this.caloriesLink);
+
+            sumNumber.innerHTML = Number(sumNumber.innerHTML) - Number(this._dataObject().price);
+            caloriesNumber.innerHTML = Number(caloriesNumber.innerHTML) - Number(this._dataObject().calories);
+
+        }
 
     }
 }
@@ -98,9 +110,18 @@ class PresenceObjcet {
 
     addArr(object) {
 
-        if(this.arr.indexOf(object.type) == -1) {
+        console.log(object);
+
+        if(!this.arr.includes(object.type)) {
             this.arr.push(object.type);
             return Boolean(true);
+        }
+
+        if(this.arr.includes(object.type)) {
+            let index = this.arr.indexOf(object.type);
+            this.arr.splice(index, 1);
+            new Calculate(object, 'delete');
+            return Boolean(false);
         }
 
     }
