@@ -1,5 +1,9 @@
 "use strict";
 
+
+/**
+ * Основной класс, который запускае весь код
+ */
 class Burger {
     constructor(container = '.container', burgerSize = '.burger__size', burgerFilling = '.burger__filling', burgerAdditional = '.burger__additional') {
         this.container = container;
@@ -57,7 +61,9 @@ class Burger {
     }
 }
 
-
+/**
+ * Класс для расчетов, производит вычисления
+ */
 class Calculate {
     constructor(dataParam, scenario, summLink = '.summ__number', caloriesLink = '.calories__number') {
         this.scenario = scenario;
@@ -103,7 +109,9 @@ class Calculate {
     }
 }
 
-
+/**
+ * Класс для проверки, необходимо проверить какую опцию выбрал пользователь и есьт выбрал то другие заблокировать
+ */
 class PresenceObjcet {
     constructor() {
         this.arr = [];
@@ -127,6 +135,9 @@ class PresenceObjcet {
 
 }
 
+/**
+ * Класс для добавления классов и блокировки кнопок
+ */
 class Frontend {
     constructor(object) {
         this.object = object;
@@ -180,6 +191,7 @@ class Frontend {
     }
 }
 
+
 class AdvancedFronted{
     constructor(object) {
         this.object = object;
@@ -194,7 +206,3 @@ class AdvancedFronted{
 
 
 new Burger();
-
-
-
-
